@@ -2,8 +2,35 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>WebServer Log</title>
+    <style>
+      body {
+        font-family: sans-serif;
+        padding: 2rem;
+      }
+      code {
+        background: #f4f4f4;
+        padding: 0.5rem;
+        border-radius: 4px;
+        display: block;
+      }
+    </style>
   </head>
-  <body></body>
+  <body>
+    <h1>💡 Webserver Logger</h1>
+    <p>아래는 수신된 <code>?cookie=</code> 값입니다:</p>
+    <code id="log">로딩 중...</code>
+
+    <script>
+      const params = new URLSearchParams(window.location.search);
+      const cookie = params.get('cookie');
+      const logBox = document.getElementById('log');
+
+      if (cookie) {
+        logBox.textContent = cookie;
+      } else {
+        logBox.textContent = '값이 전달되지 않았습니다.';
+      }
+    </script>
+  </body>
 </html>
